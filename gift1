@@ -1,0 +1,67 @@
+/*
+ID: Dominik Szczepaniak [szczepa1]
+TASK: gift1
+LANG: C++
+*/
+#include <bits/stdc++.h>
+using namespace std;
+#define ll long long
+#define ld long double
+#define FOR(i, n, m) for(int i=n; i<m; ++i)
+#define FORE(i,n,m) for(int i=n;i<=m; ++i)
+#define INSPLIT(ar) for (auto &it : ar) cin >> it
+#define SORT(ar) sort((ar).begin(), (ar).end())
+#define SORTD(ar) sort(ar.rbegin(), ar.rend())
+#define endl '\n'
+#define fast ios_base::sync_with_stdio(0);cin.tie(0);cout.tie(0);
+#define testcases int t; cin>>t; while(t--)
+
+int main()
+{
+    freopen("gift1.out", "w", stdout);
+    freopen("gift1.in", "r", stdin);
+    int n;
+    cin >> n;
+    map<string, int> osoby;
+    vector<string> os(n);
+    vector<int> hajs(n);
+    FOR(i,0,n){
+        string s;
+        cin >> s;
+        osoby[s] = 0;
+        os[i] = s;
+        //hajs[i] = 0;
+    }
+    FOR(i,0,n){
+        string s;
+        cin >> s;
+        int money, per;
+        cin >> money >> per;
+        if(per!=0){
+            int cal = money/per;
+            //cout << "cal jest rowny " << cal << endl;
+            osoby[s] -= money;
+            osoby[s] += money - (cal * per);
+            FOR(j,0,per){
+                string c;
+                cin >> c;
+                osoby[c] += cal;
+            }
+        }
+        else{
+            if(i==n-1){
+                break;
+            }
+        }
+        /*FOR(j,0,n){
+            cout << os[j] << " " << osoby[os[j]] << endl;
+        }*/
+
+
+    }
+    FOR(i,0,n){
+        cout << os[i] << " " << osoby[os[i]] << endl;
+    }
+    //cout << 1 << endl;
+
+}
